@@ -1,8 +1,2 @@
-import express from "express"
-
-import repoRoute from "./repository/index"
-const router = express.Router()
-
-router.use('/repository', repoRoute)
-
-export default router
+export { router as repository } from './repository';
+export { router as user } from './user';
