@@ -36,3 +36,5 @@ router.get("/", new RepositoryController().getAllEmployee);
 router.get("/createNew", (req: Request, res) => {
   res.send("New Repo");
 });
+
+router.post("/addNewEmployee", new RepositoryController().addNewEmployee);

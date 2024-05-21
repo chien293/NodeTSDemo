@@ -1,5 +1,5 @@
-import express from "express";
-import RepositoryModel from "models/RepositoryModel";
+import { Request, Response } from 'express';
+import { Employee } from '../models';
 class RepositoryController {
   /**
    * @swagger
@@ -11,16 +11,18 @@ class RepositoryController {
    *         description: Success
    *
    */
-  getAllEmployee = (req: express.Request, res: express.Response) => {
+  getAllEmployee = (req: Request, res: Response) => {
     res.send("All Repos");
   };
-  addNewEmployee = (req: express.Request, res: express.Response) => {
-    // const newRepo = await RepositoryModel.create({
-    //     name: 'New Repository',
-    //     createdAt: new Date(),
-    //     updatedAt: new Date()
-    //   });
-    res.send("New Repo");
+  addNewEmployee = async (req: Request, res: Response) => {
+    try {
+      console.log(req.body)
+      const { name, position, salary } = req.body;
+      const newEmployee = await Employee.create({ name, position, salary });
+      res.status(201).json(newEmployee);
+    } catch (error) {
+      res.status(500).json({ message: 'Error adding employee', error });
+    }
   };
 }
 

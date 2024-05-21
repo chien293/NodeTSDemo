@@ -1,12 +1,15 @@
 {
     "compilerOptions": {
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
-        "baseUrl": "src",
-        "outDir": "dist",
-        "sourceMap": true,
-        "noImplicitAny": true,
+        "target": "ES6",
+        "module": "commonjs",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "resolveJsonModule": true
 
     },
     "include": ["src/**/*", "src/routes", "controllerssrc/modelsdels", "models"],
+    "exclude": ["node_modules"]
 }
