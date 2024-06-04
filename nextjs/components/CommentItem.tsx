@@ -16,9 +16,9 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
     setShowReplies(!showReplies);
   };
 
-  const nestedComments = showReplies ? (comment.replies || []).map(reply => {
-    return <CommentItem key={reply.id} comment={reply} />;
-  }) : null;
+  // const nestedComments = showReplies ? (comment.replies || []).map(reply => {
+  //   return <CommentItem key={reply.id} comment={reply} />;
+  // }) : null;
 
   return (
     <div style={{ marginBottom: '16px' }}>
@@ -43,7 +43,7 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
           </a>
           <p>Project: {comment.project_name}</p>
         </div>
-        {nestedComments}
+        {/* {nestedComments} */}
       </CommentUI>
     </div>
   );

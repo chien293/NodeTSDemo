@@ -3,6 +3,7 @@ import React from 'react';
 import CommentTable from '../components/CommentTable';
 import { Comment } from '../models/Comment';
 import { Layout, Menu } from 'antd';
+import SelectItem from '../components/SelectItem';
 
 const { Header, Content, Footer } = Layout;
 
@@ -34,6 +35,26 @@ const comments: Comment[] = [
   }
 ];
 
+const selectedComment: Comment[] = [
+  {
+    id: 1,
+    body: "This is a top level comment with a very long text. This is a top level comment with a very long text. This is a top level comment with a very long text. This is a top level comment with a very long text. This is a top level comment with a very long text.  This is a top level comment with a very long text. This is a top level comment with a very long text. This is a top level comment with a very long text. This is a top level comment with a very long text.",
+    author: "User1",
+    created_at: "2023-05-01T12:34:56Z",
+    project_name: "Project ABC",
+    merge_request_link: "https://github.com/owner/repo/pull/1"
+  },
+  {
+    id: 2,
+    body: "This is a reply to the top level comment",
+    author: "User2",
+    created_at: "2023-05-01T13:00:00Z",
+    project_name: "Project ABC",
+    merge_request_link: "https://github.com/owner/repo/pull/1",
+    parent_id: 1
+  },
+];
+
 const CommentsPage: React.FC = () => {
   return (
     <Layout>
@@ -49,6 +70,7 @@ const CommentsPage: React.FC = () => {
         <div className="site-layout-content" style={{ marginTop: '20px' }}>
           <h1>Comments</h1>
           <CommentTable comments={comments} />
+          <SelectItem allComment={comments} selectedComment={selectedComment} />
         </div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
